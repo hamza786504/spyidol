@@ -15,19 +15,22 @@
     display: flex;
     align-items: flex-start;
     flex-direction: row;
-    padding: 8vh 0;
+    padding: 8vh 0 15px;
     justify-content: center;
 }
 
 .page_container .bottom_bar {
-    flex-basis: 50px;
+    flex-basis: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    width: 100%;
+    min-height: 38px !important;
 }
-
 .main>.formouter {
-    padding: 1rem;
+    padding: 0.5rem;
     max-width: 786px;
     width: 100%;
-    min-height: 300px;
 }
 
 .formouter>.formcover {
@@ -45,10 +48,7 @@
     text-align: center;
     max-width: 281px;
     width: 100%;
-
     aspect-ratio: 4/1;
-    /* height: 60px;
-    max-height: 60px; */
     position: relative;
 }
 .logo_image > span{
@@ -113,12 +113,13 @@
 
 .page_container .bottom_bar {
     background-color: #FE6330;
-    padding: 5px 10px;
+    padding: 0 10px;
     height: auto !important;
 }
 
 .glob_icon {
-    height: 20px;
+    height: 16px;
+    width: 16px;
 }
 
 .forgetPassLink {
@@ -143,7 +144,8 @@
     justify-content: center !important;
     flex-direction: row !important;
     background-color: var(--link-blue) !important;
-    padding: 2px 8px !important;
+    padding: 0 0 0 8px !important;
+    padding: 0 0 0 8px !important;
 }
 
 .link_white {
@@ -198,6 +200,9 @@
 }
 .ant-drawer-body{
     padding-top: 100px !important;
+    padding-bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
 }
 .ant-menu-vertical{
     padding-top: 40px !important;
@@ -206,11 +211,18 @@
     max-width: 307px;
     width: 80% !important;
 }
+.menu_box{
+    flex: 1;
+}
+.sidebar_footer{
+    flex-basis: 30px;
+    margin-top: 40px;
+}
 
 
 @media screen and (min-width : 450px) {
     .page_container .bottom_bar {
-        padding: 6px 10px;
+        padding: 0 10px;
     }
 
     .formcover>.form_body {
@@ -237,11 +249,14 @@
     .fpassword_link{
         margin-bottom: 15px !important;
     }
+    .main>.formouter {
+        padding: 1rem;
+    }
 }
 
 @media screen and (min-width : 992px) {
     .page_container .bottom_bar {
-        padding: 8px 12px;
+        padding: 30px 12px;
     }
 
     .formcover>.form_body {

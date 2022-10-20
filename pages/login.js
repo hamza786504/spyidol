@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image'
 import Head from 'next/head'
-import { Typography, Button, Form, Input, Row, Col, Dropdown, Menu, Space, Layout, Drawer } from "antd"
+import { Typography, Button, Form, Input, Row, Col, Dropdown, Menu, Space, Drawer } from "antd"
 import { DownOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
 function Login() {
 
     const { Title, Text, Link } = Typography;
-    // const [form] = Form.useForm();
+    const [form] = Form.useForm();
     const [open, setOpen] = useState(false);
     const [feildsValue, setFeildsValue] = useState({
         email: "",
@@ -18,8 +18,9 @@ function Login() {
 
     const submitLoginForm = async (e) => {
         e.preventDefault();
+        console.log(feildsValue);
+        const values = await form.validateFields();
         try {
-            const values = await form.validateFields();
             console.log('Success:', values);
         } catch (errorInfo) {
             console.log('Failed:', errorInfo);
@@ -34,6 +35,10 @@ function Login() {
         }
     };
 
+
+    // useEffect(()=> {
+    //     console.log(feildsValue);
+    // } , [feildsValue])
 
     const showDrawer = () => {
         setOpen(true);
@@ -173,11 +178,11 @@ function Login() {
                                 </Title>
 
                                 <Form
-                                    // form={form}
+                                    form={form}
                                     className="login_form"
                                     name="login_form"
                                     layout="vertical"
-                                    onSubmitCapture={submitLoginForm}
+                                    onSubmitCapture={(e) => {submitLoginForm(e)}}
                                     initialValues={{
                                         remember: true,
                                     }}
@@ -186,6 +191,7 @@ function Login() {
                                         <Form.Item
                                             initialValue={feildsValue.email}
                                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
+                                            name="email"
                                             rules={[{ required: true, message: 'Por favor, digite o e-mail ou nome de usuário' }]}>
                                             <Input size="large" name="email" onChange={(e) => { updateFeildValue(e) }} value={feildsValue.email} placeholder="Digite E-mail ou nome de usuário" />
                                         </Form.Item>
@@ -196,6 +202,7 @@ function Login() {
                                             initialValue={feildsValue.password}
                                             rules={[{ required: true, message: 'Por favor, digite a senha' }]}
                                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
+                                            name="password"
                                         >
                                             <Input size="large" name="password" placeholder="Digite Senha" onChange={(e) => { updateFeildValue(e) }} value={feildsValue.password} />
                                         </Form.Item>
@@ -222,8 +229,8 @@ function Login() {
                         </div>
                     </div>
                 </div>
-                <div style={{ height: "80px" }} flex="100%" span={24} className="bottom_bar">
-                    <Row className="footer_menu_row" justify="space-between" align='middle' style={{ height: "100%" }}>
+                <div className="bottom_bar">
+                    <Row className="footer_menu_row" justify="space-between" align='middle' style={{ width: "100%" }}>
                         <Col>
                             <div className="language">
                                 <div className="glob_icon">
@@ -272,8 +279,13 @@ function Login() {
                                     open={open}
                                     key="left"
                                 >
-                                    <Image src="/images/spyidol-logo.png" className="image" alt="logo" height="60" width="200" />
-                                    {menu}
+                                    <div className="menu_box">
+                                        <Image src="/images/spyidol-logo.png" className="image" alt="logo" height="60" width="200" />
+                                        {menu}
+                                    </div>
+                                    <div className="sidebar_footer">
+                                        <Text style={{ fontSize: "15px" }}>@ 2022 SpyIdol</Text>
+                                    </div>
                                 </Drawer>
                             </nav>
                         </Col>
