@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "WorkSans-Black";
+  src: url("../assets/fonts/WorkSans-Black.ttf");
+}
+@font-face {
+  font-family: "WorkSans-ExtraBold";
+  src: url("../assets/fonts/WorkSans-ExtraBold.ttf");
+}
+@font-face {
+  font-family: "WorkSans-Bold";
+  src: url("../assets/fonts/WorkSans-Bold.ttf");
+}
+@font-face {
+  font-family: "WorkSans-SemiBold";
+  src: url("../assets/fonts/WorkSans-SemiBold.ttf");
+}
+@font-face {
+  font-family: "WorkSans-Medium";
+  src: url("../assets/fonts/WorkSans-Medium.ttf");
+}
+@font-face {
+  font-family: "WorkSans-Regular";
+  src: url("../assets/fonts/WorkSans-Regular.ttf");
+}
+@font-face {
+  font-family: "WorkSans-Light";
+  src: url("../assets/fonts/WorkSans-Light.ttf");
+}
+@font-face {
+  font-family: "WorkSans-ExtraLight";
+  src: url("../assets/fonts/WorkSans-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "WorkSans-Hairline";
+  src: url("../assets/fonts/WorkSans-Hairline.otf");
+}
+@font-face {
+  font-family: "WorkSans-Thin";
+  src: url("../assets/fonts/WorkSans-Thin.ttf");
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: white;
+  
+}
+a {
+  color: inherit;
+}
+:root{
+  --link-blue : #9900F0;
+  --primary-orange : #FE6330;
+}
+
+
+@media screen and (min-width : 450px) {
+  
+}
