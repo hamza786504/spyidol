@@ -2,16 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image'
 import Head from 'next/head'
 import { Typography, Button, Form, Input, Row, Col, Dropdown, Menu, Space, Layout, Drawer } from "antd"
-import { DownOutlined, MenuOutlined } from '@ant-design/icons';
+import { DownOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
-function login() {
-    const { Title, Text, Link } = Typography;
-    const [form] = Form.useForm();
+function Login() {
 
+    const { Title, Text, Link } = Typography;
+    // const [form] = Form.useForm();
     const [open, setOpen] = useState(false);
-    const [placement, setPlacement] = useState('left');
-    const [visible, setVisible] = useState(false);
     const [feildsValue, setFeildsValue] = useState({
         email: "",
         password: ""
@@ -32,7 +30,6 @@ function login() {
             //     "method" : "POST",
             //     "body" : JSON.stringify(feildsValue)
             // });
-
             // const res = await result.json();
         }
     };
@@ -43,9 +40,6 @@ function login() {
     };
     const onClose = () => {
         setOpen(false);
-    };
-    const onChange = (e) => {
-        setPlacement(e.target.value);
     };
 
 
@@ -155,6 +149,9 @@ function login() {
         />
     );
 
+    const updateFeildValue = (e) => {
+        setFeildsValue({ ...feildsValue, [e.target.name]: e.target.value });
+    }
 
     return (
         <>
@@ -176,7 +173,7 @@ function login() {
                                 </Title>
 
                                 <Form
-                                    form={form}
+                                    // form={form}
                                     className="login_form"
                                     name="login_form"
                                     layout="vertical"
@@ -189,9 +186,8 @@ function login() {
                                         <Form.Item
                                             initialValue={feildsValue.email}
                                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
-                                            rules={[{ required: true, message: 'Por favor, digite o e-mail ou nome de usuário' }]}
-                                            name="email">
-                                            <Input size="large" placeholder="Digite E-mail ou nome de usuário" />
+                                            rules={[{ required: true, message: 'Por favor, digite o e-mail ou nome de usuário' }]}>
+                                            <Input size="large" name="email" onChange={(e) => { updateFeildValue(e) }} value={feildsValue.email} placeholder="Digite E-mail ou nome de usuário" />
                                         </Form.Item>
                                     </Form.Item>
 
@@ -200,8 +196,8 @@ function login() {
                                             initialValue={feildsValue.password}
                                             rules={[{ required: true, message: 'Por favor, digite a senha' }]}
                                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
-                                            name="password">
-                                            <Input size="large" placeholder="Digite Senha" />
+                                        >
+                                            <Input size="large" name="password" placeholder="Digite Senha" onChange={(e) => { updateFeildValue(e) }} value={feildsValue.password} />
                                         </Form.Item>
                                     </Form.Item>
 
@@ -227,16 +223,16 @@ function login() {
                     </div>
                 </div>
                 <div style={{ height: "80px" }} flex="100%" span={24} className="bottom_bar">
-                    <Row class="footer_menu_row" justify="space-between" align='middle' style={{ height: "100%" }}>
+                    <Row className="footer_menu_row" justify="space-between" align='middle' style={{ height: "100%" }}>
                         <Col>
                             <div className="language">
                                 <div className="glob_icon">
-                                    <Image src='/images/language_icon.png' height={20} width={20} />
+                                    <Image src='/images/language_icon.png' alt='language' height={20} width={20} />
                                 </div>
                                 <div className="select_language">
                                     <Space>
                                         <Dropdown overlay={languages}>
-                                            <Button ghost type='link' style={{ color: "white" }}>
+                                            <Button ghost style={{ color: "white", backgroundColor: "transparent", border: "none" }}>
                                                 <Space>
                                                     Português
                                                     <DownOutlined />
@@ -269,7 +265,7 @@ function login() {
                                     onClick={showDrawer}
                                 />
                                 <Drawer
-                                    style={{textAlign: "center" , backgroundColor : "transparent"}}
+                                    style={{ textAlign: "center", backgroundColor: "transparent" }}
                                     placement="left"
                                     closable={false}
                                     onClose={onClose}
@@ -288,4 +284,4 @@ function login() {
     )
 }
 
-export default login;
+export default Login;
