@@ -35,11 +35,6 @@ function Login() {
         }
     };
 
-
-    // useEffect(()=> {
-    //     console.log(feildsValue);
-    // } , [feildsValue])
-
     const showDrawer = () => {
         setOpen(true);
     };
@@ -279,7 +274,7 @@ function Login() {
                                     open={open}
                                     key="left"
                                 >
-                                    <div className="menu_box">
+                                    <div className="menu_box" style={{paddingTop : "1rem"}}>
                                         <Image src="/images/spyidol-logo.png" className="image" alt="logo" height="60" width="200" />
                                         {menu}
                                     </div>

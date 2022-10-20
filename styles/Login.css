@@ -20,12 +20,12 @@
 }
 
 .page_container .bottom_bar {
-    flex-basis: 30px;
+    flex-basis: 36px;
     display: flex;
     align-items: center;
     justify-content: stretch;
     width: 100%;
-    min-height: 38px !important;
+    min-height: 36px !important;
 }
 .main>.formouter {
     padding: 0.5rem;
@@ -168,11 +168,6 @@
     width: 95%;
 }
 
-.navbar {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
 .logo {
     height: 32px;
     margin-left: 1rem;
@@ -199,7 +194,7 @@
     background-color: transparent !important;
 }
 .ant-drawer-body{
-    padding-top: 100px !important;
+    padding-top: 8vh !important;
     padding-bottom: 0 !important;
     display: flex;
     flex-direction: column;
@@ -216,13 +211,13 @@
 }
 .sidebar_footer{
     flex-basis: 30px;
-    margin-top: 40px;
+    margin-top: 100px;
 }
 
 
 @media screen and (min-width : 450px) {
     .page_container .bottom_bar {
-        padding: 0 10px;
+        padding: 0 40px;
     }
 
     .formcover>.form_body {
@@ -256,7 +251,7 @@
 
 @media screen and (min-width : 992px) {
     .page_container .bottom_bar {
-        padding: 30px 12px;
+        padding: 30px 40px;
     }
 
     .formcover>.form_body {
