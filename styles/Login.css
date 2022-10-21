@@ -63,7 +63,7 @@
     margin: 0 auto;
 }
 .ant-form-item {
-    margin-bottom: 5px !important;
+    margin-bottom: 7px !important;
 }
 .formcover>.form_body {
     background: #FFFFFF;
@@ -83,16 +83,16 @@
 
 
 /* change margin for small screen to 40px and medium screen to 50px */
-.formcover>.loginFormFooter {
+.formcover>.FormFooter {
     text-align: center;
     margin: 30px auto 10px auto;
 }
 
-.loginFormFooter {
+.FormFooter {
     font-size: 13px;
 }
 
-.loginFormFooter p {
+.FormFooter p {
     margin-bottom: 0;
     font-family: "WorkSans-Medium";
 }
@@ -229,7 +229,7 @@
     }
 
     .forgetPassLink,
-    .loginFormFooter {
+    .FormFooter {
         font-size: 14px;
     }
     .ant-form-item {
@@ -238,7 +238,7 @@
     .formcover>.form_body {
         margin-top: 35px !important;
     }
-    .formcover>.loginFormFooter {
+    .formcover>.FormFooter {
         margin: 40px auto 10px auto;
     }
     .fpassword_link{
@@ -253,7 +253,9 @@
     .page_container .bottom_bar {
         padding: 30px 40px;
     }
-
+    .ant-form-item {
+        margin-bottom: 10px !important;
+    }
     .formcover>.form_body {
         padding: 1.6rem;
     }
@@ -263,7 +265,7 @@
     }
 
     .forgetPassLink,
-    .loginFormFooter {
+    .FormFooter {
         font-size: 16px;
     }
 
@@ -284,7 +286,7 @@
     .form_heading{
         margin-bottom: 35px !important;
     }
-    .formcover>.loginFormFooter {
+    .formcover>.FormFooter {
         margin: 50px auto 10px auto;
     }
 }
@@ -310,7 +312,7 @@
     }
 
     .forgetPassLink,
-    .loginFormFooter {
+    .FormFooter {
         font-size: 18px;
     }
 }
