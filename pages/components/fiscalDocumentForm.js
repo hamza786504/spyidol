@@ -5,7 +5,7 @@ const [form] = Form.useForm();
 export default function FiscalDocumentForm() {
 
     const { Title } = Typography;
-    const [document , setDocument] = useState("")
+    const [document , setDocument] = useState("");
 
     const options = [
         {
