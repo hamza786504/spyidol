@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Cascader , Typography , Form } from 'antd';
-const [form] = Form.useForm();
+import { Cascader , Typography , Form , Button } from 'antd';
+
 
 export default function FiscalDocumentForm() {
-
+    const [form] = Form.useForm();
     const { Title } = Typography;
     const [document , setDocument] = useState("");
 
@@ -83,10 +83,9 @@ export default function FiscalDocumentForm() {
                     <Cascader options={options} onChange={onChange} placeholder="Selecionar" />
 
 
-                    <Form.Item style={{ marginTop: "20px" }}>
+                    <Form.Item style={{ marginTop: "30px" }}>
                         <Button size="large" htmlType='submit' className="form_submit_btn" type="primary">Avancar</Button>
                     </Form.Item>
-
                 </Form>
 
 

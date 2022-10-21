@@ -27,6 +27,7 @@
     width: 100%;
     min-height: 36px !important;
 }
+
 .main>.formouter {
     padding: 0.5rem;
     max-width: 786px;
@@ -51,10 +52,12 @@
     aspect-ratio: 4/1;
     position: relative;
 }
-.logo_image > span{
+
+.logo_image>span {
     width: 90% !important;
     margin: 0 auto !important;
 }
+
 .image {
     /* max-width: 281px; */
     width: 100%;
@@ -62,9 +65,11 @@
     height: 100%;
     margin: 0 auto;
 }
+
 .ant-form-item {
     margin-bottom: 7px !important;
 }
+
 .formcover>.form_body {
     background: #FFFFFF;
     border: 1px solid #EFEFEF;
@@ -76,7 +81,8 @@
     margin-top: 20px;
     width: 100%;
 }
-.form_heading{
+
+.form_heading {
     margin-bottom: 20px !important;
 }
 
@@ -172,49 +178,73 @@
     height: 32px;
     margin-left: 1rem;
 }
-.ant-drawer-content-wrapper{
+
+.ant-drawer-content-wrapper {
     backdrop-filter: blur(40px) !important;
     -webkit-backdrop-filter: blur(40px) !important;
     background: linear-gradient(174.43deg, rgba(255, 255, 255, 0.35) -0.98%, rgba(255, 255, 255, 0.75) 99.51%) !important;
     box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1) !important;
 }
-.ant-drawer-content{
+
+.ant-drawer-content {
     background-color: transparent !important;
 }
-.ant-menu-vertical{
+
+.ant-menu-vertical {
     border-right: none !important;
 }
-.ant-menu{
+
+.ant-menu {
     background-color: transparent !important;
 }
-.ant-menu-item.ant-menu-item-only-child{
+
+.ant-menu-item.ant-menu-item-only-child {
     text-align: center !important;
 }
-.ant-drawer-mask{
+
+.ant-drawer-mask {
     background-color: transparent !important;
 }
-.ant-drawer-body{
+
+.ant-drawer-body {
     padding-top: 8vh !important;
     padding-bottom: 0 !important;
     display: flex;
     flex-direction: column;
 }
-.ant-menu-vertical{
+
+.ant-menu-vertical {
     padding-top: 40px !important;
 }
-.ant-drawer-content-wrapper{
+
+.ant-drawer-content-wrapper {
     max-width: 307px;
     width: 80% !important;
 }
-.menu_box{
+
+.menu_box {
     flex: 1;
 }
-.sidebar_footer{
+
+.sidebar_footer {
     flex-basis: 30px;
     margin-top: 100px;
 }
 
+.ant-cascader {
+    width: 100% !important;
+    position: relative !important;
+}
 
+.ant-select-dropdown {
+    width: calc(87%) !important;
+    max-width: 700px;
+}
+.ant-select-selector{
+    display: flex !important;
+    align-items: center !important;
+    height: 40px !important;
+}
 @media screen and (min-width : 450px) {
     .page_container .bottom_bar {
         padding: 0 40px;
@@ -232,18 +262,23 @@
     .FormFooter {
         font-size: 14px;
     }
+
     .ant-form-item {
         margin-bottom: 7px !important;
     }
+
     .formcover>.form_body {
         margin-top: 35px !important;
     }
+
     .formcover>.FormFooter {
         margin: 40px auto 10px auto;
     }
-    .fpassword_link{
+
+    .fpassword_link {
         margin-bottom: 15px !important;
     }
+
     .main>.formouter {
         padding: 1rem;
     }
@@ -253,9 +288,11 @@
     .page_container .bottom_bar {
         padding: 30px 40px;
     }
+
     .ant-form-item {
         margin-bottom: 10px !important;
     }
+
     .formcover>.form_body {
         padding: 1.6rem;
     }
@@ -280,12 +317,15 @@
     .menu {
         display: none;
     }
+
     .formcover>.form_body {
         margin-top: 50px !important;
     }
-    .form_heading{
+
+    .form_heading {
         margin-bottom: 35px !important;
     }
+
     .formcover>.FormFooter {
         margin: 50px auto 10px auto;
     }
