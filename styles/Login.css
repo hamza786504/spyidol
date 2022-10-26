@@ -144,6 +144,16 @@
     border-radius: 8px !important;
 }
 
+.outline-dark-btn {
+    width: 100%;
+    background: transparent !important;
+    border: 1px solid #101010 !important;
+    padding: 0.6rem !important;
+    color: black !important;
+    height: auto !important;
+    border-radius: 8px !important;
+}
+
 .language {
     display: flex !important;
     align-items: center !important;
@@ -236,15 +246,86 @@
     position: relative !important;
 }
 
-.ant-select-dropdown {
+/* .ant-select-dropdown {
     width: calc(87%) !important;
     max-width: 700px;
 }
-.ant-select-selector{
+*/
+.ant-select-selector {
     display: flex !important;
     align-items: center !important;
     height: 40px !important;
 }
+
+.ant-radio-group {
+    width: 100% !important;
+}
+
+
+.wish_card.active,
+.register_card.active {
+    border: 1px solid #FE6330 !important;
+    background: #FE6330 !important;
+}
+
+.wish_card .wish_card_image {
+    background-color: white !important;
+    height: 80% !important;
+    padding: 3rem 1rem !important;
+    position: relative;
+}
+
+.selectWish .wish_card,
+.selectRegisterType .register_card {
+    display: inline-block;
+    background-color: #ddd;
+    font-family: Arial;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    align-items: stretch;
+    justify-content: center;
+    background-color: #bbb;
+    border: 1px solid #bbb;
+    border-radius: 0px 0px 8px 8px;
+    overflow: hidden;
+}
+
+.selectRegisterType .register_card {
+    border-radius: 4rem !important;
+    max-width: 200px !important;
+}
+
+.ant-radio-checked .ant-radio-inner,
+.ant-radio-inner::after {
+    border-color: #FE6330 !important;
+    background-color: white !important;
+    box-shadow: 0px 0px 0px 4px #FE6330;
+}
+
+.wish_radio_box,
+.register_radio_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.8rem !important;
+}
+
+.ant-upload.ant-upload-drag {
+    background: #FFFFFF !important;
+    border: 1px solid #EFEFEF !important;
+    border-radius: 8px !important;
+}
+.ant-upload.ant-upload-btn{
+    padding: 0 !important;
+}
+
+.ant-upload.ant-upload-drag{
+    height: 200px !important;
+}
+
 @media screen and (min-width : 450px) {
     .page_container .bottom_bar {
         padding: 0 40px;

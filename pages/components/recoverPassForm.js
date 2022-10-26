@@ -60,7 +60,7 @@ export default function RecoverPassForm() {
                             initialValue={feildsValue.email}
                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
                             name="email"
-                            rules={[{ required: true, message: 'Por favor, digite o e-mail ou nome de usuário' }]}>
+                            rules={[{ required: true, message: 'Digite o e-mail para recuperar a senha' }]}>
                             <Input size="large" name="email" onChange={(e) => { updateFeildValue(e) }} value={feildsValue.email} placeholder="Digite E-mail" />
                         </Form.Item>
                     </Form.Item>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Cascader, Typography, Form, Button } from 'antd';
 
 
-export default function FiscalDocumentForm() {
+export default function EntityForm() {
     const [form] = Form.useForm();
     const { Title } = Typography;
     const [document, setDocument] = useState("");
@@ -55,7 +55,7 @@ export default function FiscalDocumentForm() {
         <>
             <div className="form_body">
                 <Title level={2} className="form_heading">
-                Selecione o país do seu documento fiscal
+                Pessoa física ou pessoa jurídica?
                 </Title>
 
                 <Form
@@ -68,14 +68,16 @@ export default function FiscalDocumentForm() {
                         remember: true,
                     }}
                 >
-                    <Form.Item label="País" style={{ marginBottom: "0", marginLeft: "13px", fontFamily: "WorkSans-SemiBold" }}>
+
+                    <Form.Item label="Tipo de documento" style={{ marginBottom: "0", marginLeft: "13px", fontFamily: "WorkSans-SemiBold" }}>
                         <Form.Item
                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
                             name="email"
-                            rules={[{ required: true, message: 'Por favor selecione seu país documento fiscal' }]}>
+                            rules={[{ required: true, message: 'Selecione Pessoa física ou jurídica?' }]}>
                             <Cascader options={options} onChange={onChange} placeholder="Selecionar" />
                         </Form.Item>
                     </Form.Item>
+
 
                     <Form.Item style={{ marginTop: "30px" }}>
                         <Button size="large" htmlType='submit' className="form_submit_btn" type="primary">Avancar</Button>
