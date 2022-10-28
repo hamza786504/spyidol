@@ -1,48 +1,64 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Typography, Form, Button, Row, Col, Input } from 'antd';
 import InputMask from 'react-input-mask';
 import Schema from 'async-validator';
 Schema.warning = function () { };
 
-function TimeInput(props) {
-    let mask = 'DD/MM/YYYY';
-    let formatChars = {
-        'Y': '[0-9]',
-        'd': '[0-3]',
-        'D': '[0-9]',
-        'm': '[0-1]',
-        'M': '[1-9]'
-    };
+// function TimeInput({value , onChangeHandler}) {
+    // let mask = '__/__/____';
+    // let formatChars = {
+    //     'Y': '[0-9]',
+    //     'd': '[0-3]',
+    //     'D': '[0-9]',
+    //     'm': '[0-1]',
+    //     'M': '[1-9]'
+    // };
 
-    let beforeMaskedValueChange = (newState, oldState, userInput) => {
-        let { value } = newState;
+    // let beforeMaskedValueChange = () => {
 
-        let dateParts = value.split('/');
-        let dayPart = dateParts[0];
-        let monthPart = dateParts[1];
+    //     let dateParts = value.split('/');
+    //     let dayPart = dateParts[0];
+    //     let monthPart = dateParts[1];
 
-        if (dayPart.startsWith('3'))
-            formatChars['D'] = '[0-1]';
-        else if (dayPart.startsWith('0'))
-            formatChars['D'] = '[1-9]';
-        else
-            formatChars['D'] = '[0-9]';
+    //     if (dayPart.startsWith('3'))
+    //         formatChars['D'] = '[0-1]';
+    //     else if (dayPart.startsWith('0'))
+    //         formatChars['D'] = '[1-9]';
+    //     else
+    //         formatChars['D'] = '[0-9]';
 
 
-        if (monthPart === "" && monthPart.startsWith('1'))
-            formatChars['M'] = '[0-2]';
-        else
-            formatChars['M'] = '[1-9]';
+    //     if (monthPart === "" && monthPart.startsWith('1'))
+    //         formatChars['M'] = '[0-2]';
+    //     else
+    //         formatChars['M'] = '[1-9]';
 
-        return { value, selection: newState.selection };
-    }
+    //     return { value, selection: value.selection };
+    // }
+//     return (
+//         <InputMask
+//             name='birthDate'
+//             alwaysShowMask={true}
+//             mask={mask}
+//             maskPlaceholder='DD/MM/YYYY'
+//             value={value}
+//             onChange={(e) => { onChangeHandler(e) }}
+//             formatChars={formatChars}
+//             beforeMaskedValueChange={beforeMaskedValueChange}>
+//         </InputMask>
+//     );
+// }
+
+
+function TimeInput({value , onChange}) {
     return (
         <InputMask
-            mask={mask}
-            value={props.value}
-            onChange={props.onChange}
-            formatChars={formatChars}
-            beforeMaskedValueChange={beforeMaskedValueChange}>
+            name='birthDate'
+            alwaysShowMask={true}
+            mask='99/99/9999'
+            maskPlaceholder='__/__/____'
+            value={value}
+            onChange={(e) => { onChange(e) }}>
         </InputMask>
     );
 }
@@ -51,7 +67,7 @@ function CPFInput({ value, onChange }) {
         <InputMask
             name='CPF'
             alwaysShowMask={true}
-            mask='999-999-999-99'
+            mask='999.999.999-99'
             maskPlaceholder='___.___.___-__'
             value={value}
             onChange={(e) => { onChange(e) }}>
@@ -63,8 +79,8 @@ function Cell({ value, onChange }) {
         <InputMask
             name='cell'
             alwaysShowMask={true}
-            mask='+1 999 999 9999'
-            maskPlaceholder='DD/MM/YYYY'
+            mask='+55 (99) 9-9999-99999'
+            maskPlaceholder='+55 (__) _-____-_____'
             value={value}
             onChange={(e) => { onChange(e) }}>
         </InputMask>
@@ -81,6 +97,7 @@ export default function PartnersDetailsForm() {
         cell: ""
     });
     const onChangeHandler = (e) => {
+        console.log(e.target.value);
         let changedValue;
         if (e.target.name === "CPF" || e.target.name === "birthDate" || e.target.name === "cell") {
             changedValue = e.target.value.replace(/\D+/g, '');
@@ -92,6 +109,7 @@ export default function PartnersDetailsForm() {
     const submitDetails = async (e) => {
         e.preventDefault();
         // const values = await form.validateFields();
+        console.log(feildsValue);
     };
     return (
         <>
@@ -161,6 +179,7 @@ export default function PartnersDetailsForm() {
                                             initialValue={feildsValue.birthDate}
                                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
                                             name="birthDate"
+                                            placeholder="DD/MM/YYYY"
                                             rules={[{ required: true, message: 'Por favor, insira a data de nascimento' }]}>
                                             {/* <Input size="large" name="birthDate" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.birthDate} placeholder="DD/MM/YYYY" /> */}
                                             {/* <BirthDate
@@ -171,11 +190,10 @@ export default function PartnersDetailsForm() {
                                                 onChange={(e) => { onChangeHandler(e) }}>
                                             </BirthDate> */}
                                             <TimeInput
-                                                className="ant-input"
-                                                rules={[{ required: true, message: 'Por favor, insira a data de nascimento' }]}
                                                 name="birthDate"
+                                                rules={[{ required: true, message: 'Por favor, insira a data de nascimento' }]}
+                                                className="ant-input"
                                                 value={feildsValue.birthDate}
-                                                placeholder="DD/MM/YYYY"
                                                 onChange={(e) => { onChangeHandler(e) }}>
                                             </TimeInput>
                                         </Form.Item>

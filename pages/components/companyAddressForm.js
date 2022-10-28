@@ -1,5 +1,19 @@
 import React, { useState } from 'react'
 import { Typography, Form, Button, Row, Col, Input, Cascader } from 'antd';
+import InputMask from 'react-input-mask';
+
+function CEPInput({ value, onChange }) {
+    return (
+        <InputMask
+            name='zipCode'
+            alwaysShowMask={true}
+            mask='99999-999'
+            maskPlaceholder='_____-___'
+            value={value}
+            onChange={(e) => { onChange(e) }}>
+        </InputMask>
+    );
+}
 
 export default function CompanyAddressForm() {
     const [form] = Form.useForm();
@@ -17,17 +31,19 @@ export default function CompanyAddressForm() {
 
 
     const onChangeHandler = (e) => {
-        setFeildsValue({ ...feildsValue, [e.target.name]: e.target.value });
+        let changedValue;
+        if (e.target.name === "zipCode") {
+            changedValue = e.target.value.replace(/\D+/g, '');
+        } else {
+            changedValue = e.target.value;
+        }
+        setFeildsValue({ ...feildsValue, [e.target.name]: changedValue });
     }
 
     const submitAdress = async (e) => {
         e.preventDefault();
-        const values = await form.validateFields();
-        try {
-            console.log('Success:', values);
-        } catch (errorInfo) {
-            console.log('Failed:', errorInfo);
-        }
+        console.log(feildsValue);
+        // const values = await form.validateFields();
         // if (feildsValue.email || feildsValue.password !== "") {
         // const result = await fetch("api" , {
         //     "Content-Type" : "application/json",
@@ -95,7 +111,14 @@ export default function CompanyAddressForm() {
                                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
                                             name="zipCode"
                                             rules={[{ required: true, message: 'Por favor selecione CEP' }]}>
-                                            <Input size="large" name="zipCode" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.zipCode} placeholder="Digite CEP" />
+                                            {/* <Input size="large" name="zipCode" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.zipCode} placeholder="Digite CEP" /> */}
+                                            <CEPInput
+                                                name="zipCode"
+                                                rules={[{ required: true, message: 'Por favor insira o CPF' }]}
+                                                className="ant-input"
+                                                value={feildsValue.zipCode}
+                                                onChange={(e) => { onChangeHandler(e) }}>
+                                            </CEPInput>
                                         </Form.Item>
                                     </Form.Item>
                                 </Col>
