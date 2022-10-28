@@ -318,12 +318,41 @@
     border: 1px solid #EFEFEF !important;
     border-radius: 8px !important;
 }
-.ant-upload.ant-upload-btn{
+
+.ant-upload.ant-upload-btn {
     padding: 0 !important;
 }
 
-.ant-upload.ant-upload-drag{
+.ant-upload.ant-upload-drag {
     height: 200px !important;
+}
+
+.ant-form-item-control-input-content input {
+    width: 100% !important;
+    border: 1px solid #d9d9d9 !important;
+    border-radius: 2px !important;
+    transition: all 0.3s !important;
+    padding: 6.5px 11px !important;
+    color: #000000 !important;
+    font-size: 16px !important;
+}
+
+.ant-form-item-control-input-content input:focus {
+    border-color: #40a9ff;
+    border-top-color: rgb(64, 169, 255);
+    border-right-color: rgb(64, 169, 255);
+    border-bottom-color: rgb(64, 169, 255);
+    border-left-color: rgb(64, 169, 255);
+    box-shadow: 0 0 0 2px rgb(24 144 255 / 20%);
+    border-right-width: 1px;
+    outline: 0;
+}
+
+input {
+    /* font-family: 'Work Sans' !important; */
+    font-family: "WorkSans-Medium" !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
 }
 
 @media screen and (min-width : 450px) {

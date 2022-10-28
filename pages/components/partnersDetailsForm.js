@@ -1,6 +1,75 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Typography, Form, Button, Row, Col, Input } from 'antd';
+import InputMask from 'react-input-mask';
+import Schema from 'async-validator';
+Schema.warning = function () { };
 
+function TimeInput(props) {
+    let mask = 'DD/MM/YYYY';
+    let formatChars = {
+        'Y': '[0-9]',
+        'd': '[0-3]',
+        'D': '[0-9]',
+        'm': '[0-1]',
+        'M': '[1-9]'
+    };
+
+    let beforeMaskedValueChange = (newState, oldState, userInput) => {
+        let { value } = newState;
+
+        let dateParts = value.split('/');
+        let dayPart = dateParts[0];
+        let monthPart = dateParts[1];
+
+        if (dayPart.startsWith('3'))
+            formatChars['D'] = '[0-1]';
+        else if (dayPart.startsWith('0'))
+            formatChars['D'] = '[1-9]';
+        else
+            formatChars['D'] = '[0-9]';
+
+
+        if (monthPart === "" && monthPart.startsWith('1'))
+            formatChars['M'] = '[0-2]';
+        else
+            formatChars['M'] = '[1-9]';
+
+        return { value, selection: newState.selection };
+    }
+    return (
+        <InputMask
+            mask={mask}
+            value={props.value}
+            onChange={props.onChange}
+            formatChars={formatChars}
+            beforeMaskedValueChange={beforeMaskedValueChange}>
+        </InputMask>
+    );
+}
+function CPFInput({ value, onChange }) {
+    return (
+        <InputMask
+            name='CPF'
+            alwaysShowMask={true}
+            mask='999-999-999-99'
+            maskPlaceholder='___.___.___-__'
+            value={value}
+            onChange={(e) => { onChange(e) }}>
+        </InputMask>
+    );
+}
+function Cell({ value, onChange }) {
+    return (
+        <InputMask
+            name='cell'
+            alwaysShowMask={true}
+            mask='+1 999 999 9999'
+            maskPlaceholder='DD/MM/YYYY'
+            value={value}
+            onChange={(e) => { onChange(e) }}>
+        </InputMask>
+    );
+}
 export default function PartnersDetailsForm() {
     const [form] = Form.useForm();
     const { Title } = Typography;
@@ -10,63 +79,20 @@ export default function PartnersDetailsForm() {
         CPF: "",
         birthDate: "",
         cell: ""
-    })
-
-
-
+    });
     const onChangeHandler = (e) => {
-        setFeildsValue({ ...feildsValue, [e.target.name]: e.target.value });
+        let changedValue;
+        if (e.target.name === "CPF" || e.target.name === "birthDate" || e.target.name === "cell") {
+            changedValue = e.target.value.replace(/\D+/g, '');
+        } else {
+            changedValue = e.target.value;
+        }
+        setFeildsValue({ ...feildsValue, [e.target.name]: changedValue });
     }
-
     const submitDetails = async (e) => {
         e.preventDefault();
-        const values = await form.validateFields();
-        try {
-            console.log('Success:', values);
-        } catch (errorInfo) {
-            console.log('Failed:', errorInfo);
-        }
-        // if (feildsValue.email || feildsValue.password !== "") {
-        // const result = await fetch("api" , {
-        //     "Content-Type" : "application/json",
-        //     "method" : "POST",
-        //     "body" : JSON.stringify(feildsValue)
-        // });
-        // const res = await result.json();
-        // }
+        // const values = await form.validateFields();
     };
-
-
-
-
-    const [select, setSelect] = useState("");
-
-    const options = [
-        {
-            value: 'EN',
-            label: 'EN',
-        },
-        {
-            value: 'CA',
-            label: 'CA',
-        },
-        {
-            value: 'UR',
-            label: 'UR',
-        },
-        {
-            value: 'FR',
-            label: 'FR',
-        },
-    ];
-
-    const onChange = (value) => {
-        setSelect(value);
-    };
-
-
-
-
     return (
         <>
             <div className="form_body">
@@ -119,7 +145,13 @@ export default function PartnersDetailsForm() {
                                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
                                             name="CPF"
                                             rules={[{ required: true, message: 'Por favor insira o CPF' }]}>
-                                            <Input size="large" name="CPF" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.CPF} placeholder="___.___.___-__" />
+                                            <CPFInput
+                                                name="CPF"
+                                                rules={[{ required: true, message: 'Por favor insira o CPF' }]}
+                                                className="ant-input"
+                                                value={feildsValue.CPF}
+                                                onChange={(e) => { onChangeHandler(e) }}>
+                                            </CPFInput>
                                         </Form.Item>
                                     </Form.Item>
                                 </Col>
@@ -130,7 +162,22 @@ export default function PartnersDetailsForm() {
                                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
                                             name="birthDate"
                                             rules={[{ required: true, message: 'Por favor, insira a data de nascimento' }]}>
-                                            <Input size="large" name="birthDate" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.birthDate} placeholder="DD/MM/YYYY" />
+                                            {/* <Input size="large" name="birthDate" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.birthDate} placeholder="DD/MM/YYYY" /> */}
+                                            {/* <BirthDate
+                                                name="birthDate"
+                                                rules={[{ required: true, message: 'Por favor, insira a data de nascimento' }]}
+                                                className="ant-input"
+                                                value={feildsValue.birthDate}
+                                                onChange={(e) => { onChangeHandler(e) }}>
+                                            </BirthDate> */}
+                                            <TimeInput
+                                                className="ant-input"
+                                                rules={[{ required: true, message: 'Por favor, insira a data de nascimento' }]}
+                                                name="birthDate"
+                                                value={feildsValue.birthDate}
+                                                placeholder="DD/MM/YYYY"
+                                                onChange={(e) => { onChangeHandler(e) }}>
+                                            </TimeInput>
                                         </Form.Item>
                                     </Form.Item>
                                 </Col>
@@ -143,7 +190,15 @@ export default function PartnersDetailsForm() {
                                     style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
                                     name="cell"
                                     rules={[{ required: true, message: 'Por favor, digite o número do seu celular' }]}>
-                                    <Input size="large" type='tel' name="cell" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.cell} placeholder="+1 123 456 7891" />
+                                    {/* <Input size="large" type='tel' name="cell" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.cell} placeholder="+1 123 456 7891" /> */}
+
+                                    <Cell
+                                        name="cell"
+                                        rules={[{ required: true, message: 'Por favor, digite o número do seu celular' }]}
+                                        className="ant-input"
+                                        value={feildsValue.cell}
+                                        onChange={(e) => { onChangeHandler(e) }}>
+                                    </Cell>
                                 </Form.Item>
                             </Form.Item>
                         </Col>

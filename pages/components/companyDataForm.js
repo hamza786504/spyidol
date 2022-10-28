@@ -1,5 +1,33 @@
 import React, { useState } from 'react'
 import { Typography, Form, Button, Row, Col, Input } from 'antd';
+import InputMask from 'react-input-mask';
+
+function CNPJInput({ value, onChange }) {
+    return (
+        <InputMask
+            name='CNPJ'
+            alwaysShowMask={true}
+            mask='99.999.999/9999-99'
+            maskPlaceholder='__.___.___/____-__'
+            value={value}
+            onChange={(e) => { onChange(e) }}>
+        </InputMask>
+    );
+}
+
+function OpeningDataInput({ value, onChange }) {
+    return (
+        <InputMask
+            name='openingData'
+            alwaysShowMask={true}
+            mask='99/99/9999'
+            maskPlaceholder='__/__/____'
+            value={value}
+            onChange={(e) => { onChange(e) }}>
+        </InputMask>
+    );
+}
+
 
 export default function CompanyDataForm() {
     const [form] = Form.useForm();
@@ -17,19 +45,6 @@ export default function CompanyDataForm() {
     const submitCompanyData = async (e) => {
         e.preventDefault();
         const values = await form.validateFields();
-        try {
-            console.log('Success:', values);
-        } catch (errorInfo) {
-            console.log('Failed:', errorInfo);
-        }
-        // if (feildsValue.email || feildsValue.password !== "") {
-        // const result = await fetch("api" , {
-        //     "Content-Type" : "application/json",
-        //     "method" : "POST",
-        //     "body" : JSON.stringify(feildsValue)
-        // });
-        // const res = await result.json();
-        // }
     };
 
 
@@ -69,7 +84,16 @@ export default function CompanyDataForm() {
                                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
                                             name="CNPJ"
                                             rules={[{ required: true, message: 'Insira o CNPJ' }]}>
-                                            <Input size="large" name="CNPJ" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.CNPJ} placeholder="__.___.___/____-__" />
+                                            {/* <Input size="large" name="CNPJ" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.CNPJ} placeholder="__.___.___/____-__" /> */}
+
+
+                                            <CNPJInput
+                                                name="CNPJ"
+                                                rules={[{ required: true, message: 'Insira o CNPJ' }]}
+                                                className="ant-input"
+                                                value={feildsValue.CNPJ}
+                                                onChange={(e) => { onChangeHandler(e) }}>
+                                            </CNPJInput>
                                         </Form.Item>
                                     </Form.Item>
                                 </Col>
@@ -84,7 +108,14 @@ export default function CompanyDataForm() {
                                             style={{ marginLeft: "-13px", fontFamily: "WorkSans-Normal" }}
                                             name="openingData"
                                             rules={[{ required: true, message: 'Por favor, adicione a data de abertura' }]}>
-                                            <Input size="large" name="openingData" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.openingData} placeholder="__/__/____" />
+                                            {/* <Input size="large" name="openingData" onChange={(e) => { onChangeHandler(e) }} value={feildsValue.openingData} placeholder="__/__/____" /> */}
+                                            <OpeningDataInput
+                                                name="CNPJ"
+                                                rules={[{ required: true, message: 'Por favor, adicione a data de abertura' }]}
+                                                className="ant-input"
+                                                value={feildsValue.CNPJ}
+                                                onChange={(e) => { onChangeHandler(e) }}>
+                                            </OpeningDataInput>
                                         </Form.Item>
                                     </Form.Item>
                                 </Col>
